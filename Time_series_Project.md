@@ -1,7 +1,7 @@
 
 
 ```R
-#read and transform data 
+# read and transform data 
 library(tseries)
 cof <- read.csv("COF.csv") 
 boa <- read.csv("BAC.csv")
@@ -12,7 +12,7 @@ wfc <- ts(wfc, start=c(1994, 11), end=c(2019, 10), frequency=12)
 ```
 
 ```r
-#plot of data
+# plot of data
 par(mfrow=c(3,1))
 plot.ts(cof,main="Capital One Financial Corporation")
 plot.ts(boa,main="Bank of America Corporation")
@@ -26,7 +26,7 @@ adf.test(wfc)
 ```
 
 
-#Capital One 
+### Capital One 
 ```r
 #detect changepoints of cof
 library(changepoint)
@@ -46,7 +46,7 @@ plot(cof1,diagnostic=T)
 
 
 
-#Bank of America 
+### Bank of America 
 ```r
 boa1 <- cpt.meanvar(boa,method="PELT",penalty="CROPS",pen.value=c(1,150))
 plot(boa1,ncpts=3)
@@ -56,7 +56,7 @@ plot(boa1,diagnostic=T)
 
 
 
-#wells fargo
+### wells fargo
 ```r
 wfc1 <- cpt.meanvar(wfc,method="PELT",penalty="CROPS",pen.value=c(1,150))
 plot(wfc1,ncpts=3)
